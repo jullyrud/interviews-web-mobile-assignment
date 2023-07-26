@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom";
-
 import { AppWrap, AppList, AppItem } from "./AppBarStyled"
 
 
@@ -19,7 +18,8 @@ export function AppBar( ) {
             </AppList> 
             
         </AppWrap>
-        <Outlet /></>
+            <Outlet />
+        </>
     
         
     )
