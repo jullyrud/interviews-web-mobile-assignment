@@ -29,7 +29,7 @@ const [postPerPage, setPostPerPage] = useState(10);
     }
 makeListWiev(posts, postPerPage);
   }, [posts, postPerPage]);
-
+console.log(setPostPerPage);
   return (
 
     <>
