@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
-import { AppWrap, AppList, AppItem } from "./AppBarStyled"
+import { AppWrap, AppList, AppItem, BtnLoadMore } from "./AppBarStyled"
 
 
-export function AppBar( ) {
+export function AppBar({onLoadMoreBtnClick}) {
     
     return (
         <>
@@ -19,6 +19,7 @@ export function AppBar( ) {
             
         </AppWrap>
             <Outlet />
+            <BtnLoadMore onClick={onLoadMoreBtnClick}>load more</BtnLoadMore>
         </>
     
         

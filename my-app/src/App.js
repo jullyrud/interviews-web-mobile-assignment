@@ -11,30 +11,35 @@ import { NotFound } from './components/NotFound/NotFound';
 
 
 function App() {
+const postPerPage = 10
 const [posts, setPosts] = useState([]);
 const [listPosts, setListPosts] = useState([]);
-const [postPerPage, setPostPerPage] = useState(10);
+const [firstValuePage, setFirstValuePage] = useState(0);
+const [laststValuePage, setLaststValuePage] = useState(postPerPage);
+  
+  
   
     useEffect(() => {
       fethPosts().then(({ data }) => {
         if (data) {
         setPosts(data)
-        }})
-  }, []);
+        }
+        const newData = posts.slice(0, laststValuePage);
+        setListPosts(newData)
+        })
+  }, [firstValuePage, laststValuePage, listPosts.length, posts]);
 
-  useEffect(() => {
-    function makeListWiev(data, postPerPage) {
-      const newData = data.slice(0, postPerPage);
-      setListPosts(newData);
-    }
-makeListWiev(posts, postPerPage);
-  }, [posts, postPerPage]);
-console.log(setPostPerPage);
+  
+  function onLoadMoreBtnClick() {
+    setFirstValuePage(prevFirstValue => prevFirstValue + postPerPage);
+    setLaststValuePage(prevLastValue => prevLastValue + postPerPage);
+    setListPosts(st=>[...st, ])
+  }
+
   return (
-
     <>
     <Routes>
-        <Route path="/" element={<AppBar />}>
+        <Route path="/" element={<AppBar onLoadMoreBtnClick={onLoadMoreBtnClick}  />}>
           <Route index element={<PostsList posts={listPosts} />} />
           <Route path="/comments" element={<Comments />} />
         <Route path="/albums" element={<Albums />} />

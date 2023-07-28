@@ -5,7 +5,6 @@ import { useState } from "react";
 export function PostCard({ post }) {
 
     const [isVisible, setVisible] = useState(false);
-    console.log(post);
 
      function makeBodyVisible() {
     setVisible(st => !st)
